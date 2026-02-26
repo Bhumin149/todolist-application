@@ -2,16 +2,66 @@
 <html>
 <head>
     <title>To-Do List</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin-left: 5px;
+            background-color: green;
+            color: white;
+            border: none;
+        }
+
+        li {
+            margin: 10px;
+            background: white;
+            padding: 8px;
+            list-style: none;
+            width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 
     <h1>My To-Do List</h1>
 
     <input type="text" id="taskInput" placeholder="Enter a task">
-    <button>Add Task</button>
+    <button onclick="addTask()">Add Task</button>
 
-    <ul id="taskList">
-    </ul>
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            let input = document.getElementById("taskInput");
+            let task = input.value;
+
+            if (task === "") return;
+
+            let li = document.createElement("li");
+            li.innerText = task;
+
+            document.getElementById("taskList").appendChild(li);
+            input.value = "";
+        }
+    </script>
 
 </body>
 </html>
