@@ -38,22 +38,28 @@
     <ul id="taskList"></ul>
 
     <script>
-        function addTask() {
-            let input = document.getElementById("taskInput");
-            let task = input.value;
-            if (task === "") return;
+    function addTask() {
+        let input = document.getElementById("taskInput");
+        let task = input.value;
+        if (task === "") return;
 
-            let li = document.createElement("li");
-            li.innerText = task;
+        let li = document.createElement("li");
+        li.innerText = task;
 
-            li.onclick = function () {
-                li.classList.toggle("completed");
-            };
+        // Mark completed on click
+        li.onclick = function () {
+            li.classList.toggle("completed");
+        };
 
-            document.getElementById("taskList").appendChild(li);
-            input.value = "";
-        }
-    </script>
+        // Delete on double click
+        li.ondblclick = function () {
+            li.remove();
+        };
+
+        document.getElementById("taskList").appendChild(li);
+        input.value = "";
+    }
+</script>
 
 </body>
 </html>
